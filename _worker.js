@@ -327,6 +327,10 @@ function clashFix(content) {
 				const 备改内容 = `, mtu: 1280, udp: true`;
 				const 正确内容 = `, mtu: 1280, remote-dns-resolve: true, udp: true`;
 				result += line.replace(new RegExp(备改内容, 'g'), 正确内容) + '\n';
+			} else if (line.includes('type: ss')) {
+				const 备改内容 = `, cipher: ss`;
+				const 正确内容 = `, cipher: aes-256-gcm`;
+				result += line.replace(new RegExp(备改内容, 'g'), 正确内容) + '\n';
 			} else {
 				result += line + '\n';
 			}
